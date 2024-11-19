@@ -14,9 +14,8 @@ interface AlertListItemProps {
 
 const AlertListItem: React.FC<AlertListItemProps> = ({ alert }) => {
   const date = new Date(alert.createdAt.seconds * 1000);
-  // Extract day, month, and year
-  const day = String(date.getDate()).padStart(2, "0"); // Ensure 2-digit format
-  const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
   const year = date.getFullYear();
 
   const selectedCountryData = availableCountries.find(
@@ -47,7 +46,6 @@ const AlertListItem: React.FC<AlertListItemProps> = ({ alert }) => {
         )}{" "}
       </div>
       <div className="flex flex-col justify-between items-end h-full">
-        {/* Date at the top-right */}
         <div className="flex flex-row gap-1 items-center mb-12">
           <p className="p-2 px-3 rounded-md bg-[#333333] text-white">{day}</p>
           <p className="text-[#757575] font-bold">/</p>
@@ -56,7 +54,6 @@ const AlertListItem: React.FC<AlertListItemProps> = ({ alert }) => {
           <p className="p-2 px-3 rounded-md bg-[#333333] text-white">{year}</p>
         </div>
 
-        {/* Alert triggered at the bottom-right */}
         <div className="flex items-center gap-2">
           <p className="text-right text-white opacity-50">status:</p>
           <div

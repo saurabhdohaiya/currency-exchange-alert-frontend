@@ -25,17 +25,14 @@ const SignInPage: React.FC = () => {
   return (
     <div className="h-full w-full flex flex-1 justify-center items-center bg-[#111111] overflow-hidden">
       <div className="relative w-1/5 h-auto flex flex-col items-center justify-center gap-12 text-white text-center">
-        {/* Radial Gradient Positioned in the Background */}
         <RadialGradientRectangle />
 
-        {/* Image Positioned Above the Gradient */}
         <img
           src={MegaphoneIcon1}
           alt={`${MegaphoneIcon1.toLowerCase()}`}
           className="relative z-10"
         />
 
-        {/* Content */}
         <div className="flex flex-col justify-center items-center gap-9 z-10">
           <p className="text-4xl font-bold">
             Access

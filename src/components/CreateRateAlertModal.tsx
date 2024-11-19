@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { availableCountries } from "../config/countriesConfig";
 import { saveRateAlert } from "../services/fireStoreService";
 import { MdAddBox } from "react-icons/md";
+import { toast } from "react-toastify";
 
 interface CreateRateAlertModalProps {
   closeModal: () => void;
@@ -25,13 +26,28 @@ const CreateRateAlertModal: React.FC<CreateRateAlertModalProps> = ({
       targetRate
     );
     try {
-      await saveRateAlert(title, selectedCountry, parseFloat(targetRate)); // Use the service function
-      alert("Rate alert created successfully!");
+      await saveRateAlert(title, selectedCountry, parseFloat(targetRate));
+      toast.success("Rate alert created successfully!", {
+        autoClose: 2000,
+        style: {
+          color: "#79E7A5",
+          backgroundColor: "#222222",
+          borderRadius: "8px",
+        },
+      });
       closeModal();
     } catch (error) {
-      alert("Failed to create rate alert. Please try again.");
+      toast.error("Failed to create rate alert. Please try again.", {
+        autoClose: 3000,
+        style: {
+          color: "#79E7A5",
+          backgroundColor: "#222222",
+          borderRadius: "8px",
+        },
+      });
     }
   };
+
   return (
     <div className="fixed inset-0 bg-[#11111180] backdrop-blur-[24px] flex items-center justify-center z-50">
       <div className="bg-[#333333] p-8 rounded-xl max-w-md w-1/6 flex flex-col items-center justify-center gap-6">
@@ -54,7 +70,6 @@ const CreateRateAlertModal: React.FC<CreateRateAlertModalProps> = ({
           <p>Select Country</p>
         )}
         <div className="flex flex-col gap-4 w-full">
-          {/* Title Input */}
           <div className="flex flex-col">
             <label
               htmlFor="title"

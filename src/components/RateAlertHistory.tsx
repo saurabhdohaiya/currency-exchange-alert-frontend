@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { fetchCurrencyAlerts } from "../services/fireStoreService"; // Import the service function
+import { fetchCurrencyAlerts } from "../services/fireStoreService";
 import AlertListItem from "./AlertListItem";
+import Shimmer from "./Shimmer";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { toast } from "react-toastify";
 
-const ITEMS_PER_PAGE = 10; // Number of alerts per page
+const ITEMS_PER_PAGE = 10;
 
 const RateAlertHistory: React.FC = () => {
   const [alerts, setAlerts] = useState<any[]>([]);
@@ -17,9 +19,25 @@ const RateAlertHistory: React.FC = () => {
         const fetchedAlerts = await fetchCurrencyAlerts();
         setAlerts(fetchedAlerts);
         setError(null);
+        toast.success("Alerts fetched successfully!", {
+          autoClose: 2000,
+          style: {
+            color: "#79E7A5",
+            backgroundColor: "#222222",
+            borderRadius: "8px",
+          },
+        });
       } catch (error) {
         console.error("Error fetching alerts:", error);
         setError("Failed to fetch alerts. Please try again.");
+        toast.error("Failed to fetch alerts. Please try again.", {
+          autoClose: 3000,
+          style: {
+            color: "#EF4444",
+            backgroundColor: "#222222",
+            borderRadius: "8px",
+          },
+        });
       } finally {
         setLoading(false);
       }
@@ -28,42 +46,27 @@ const RateAlertHistory: React.FC = () => {
     fetchAlerts();
   }, []);
 
-  if (loading) {
-    return <p>Loading alerts...</p>;
-  }
-
-  if (error) {
-    return <p className="text-red-500">{error}</p>;
-  }
-
-  // Calculate the start and end indices for slicing alerts
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
 
-  // Slice alerts for the current page
   const currentAlerts = alerts.slice(startIndex, endIndex);
 
-  // Calculate total pages
   const totalPages = Math.ceil(alerts.length / ITEMS_PER_PAGE);
 
-  // Handle pagination
   const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
     }
   };
 
-  // Generate condensed page numbers
   const getPageNumbers = () => {
     const pages = [];
 
     if (totalPages <= 7) {
-      // Show all pages if total pages are <= 7
       for (let i = 1; i <= totalPages; i++) {
         pages.push(i);
       }
     } else {
-      // Condensed pagination logic
       if (currentPage <= 4) {
         pages.push(1, 2, 3, 4, "...", totalPages);
       } else if (currentPage > totalPages - 4) {
@@ -98,7 +101,6 @@ const RateAlertHistory: React.FC = () => {
       <div className="flex flex-row items-center justify-between">
         <p className="font-bold text-sm opacity-75">Previous alerts</p>
         <div className="flex items-center gap-2">
-          {/* Previous Button */}
           <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
@@ -109,7 +111,6 @@ const RateAlertHistory: React.FC = () => {
             <FaAngleLeft />
           </button>
 
-          {/* Page Numbers */}
           {pageNumbers.map((page, index) =>
             typeof page === "number" ? (
               <button
@@ -130,7 +131,6 @@ const RateAlertHistory: React.FC = () => {
             )
           )}
 
-          {/* Next Button */}
           <button
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
@@ -144,7 +144,19 @@ const RateAlertHistory: React.FC = () => {
           </button>
         </div>
       </div>
-      {currentAlerts.length ? (
+
+      {loading ? (
+        <div className="flex flex-col gap-6">
+          {Array.from({ length: 6 }).map((_, index) => (
+            <Shimmer
+              key={index}
+              className="w-full h-24 bg-[#222222] rounded-lg"
+            />
+          ))}
+        </div>
+      ) : error ? (
+        <p className="text-red-500">{error}</p>
+      ) : currentAlerts.length ? (
         <div className="flex flex-col w-full gap-6">
           {currentAlerts.map((alert) => (
             <AlertListItem key={alert.id} alert={alert} />

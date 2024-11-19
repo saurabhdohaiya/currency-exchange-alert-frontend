@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-// Assets - SVGs and Icons
 import Logo from "../assets/logo.svg";
 import { FaCircleArrowDown } from "react-icons/fa6";
 

@@ -68,26 +68,19 @@ const LandingPage: React.FC = () => {
   };
 
   const textVariants = {
-    initial: { opacity: 0, y: "-50%" }, // Start above the view
-    animate: { opacity: 1, y: 0 }, // Settle into view
-    exit: { opacity: 0, y: "50%" }, // Exit below the view
-  };
-
-  const gradientVariants = {
-    initial: { opacity: 0, scale: 0.8 },
-    animate: { opacity: 0.5, scale: 1 },
-    exit: { opacity: 0, scale: 0.8 },
+    initial: { opacity: 0, y: "-50%" },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: "50%" },
   };
 
   const imageVariants = {
-    initial: { opacity: 0, scale: 1 }, // No initial scaling
-    animate: { opacity: 1, scale: 1 }, // Smoothly fade into view
-    exit: { opacity: 0, scale: 1 }, // Fade out without popping
+    initial: { opacity: 0, scale: 1 },
+    animate: { opacity: 1, scale: 1 },
+    exit: { opacity: 0, scale: 1 },
   };
 
   return (
     <div className="h-screen w-full flex flex-1 flex-col justify-start items-center bg-white relative">
-      {/* Tabs Section */}
       <div className="absolute left-1/2 top-[84%] transform -translate-x-1/2 -translate-y-1/2 flex flex-row justify-center items-center gap-4 bg-[#81EBAB] p-1 rounded-full z-50">
         {tabs.map((tab, index) => (
           <button
@@ -105,7 +98,6 @@ const LandingPage: React.FC = () => {
         ))}
       </div>
 
-      {/* Animate Screen here based on Scroll and tabClick */}
       <div
         className={`flex-1 w-full relative overflow-hidden ${tabs[activeScreen]?.backgroundColor}`}
       >
@@ -119,7 +111,6 @@ const LandingPage: React.FC = () => {
             transition={{ duration: 0.4 }}
             className="absolute top-0 left-0 w-full h-full"
           >
-            {/* Screen Content */}
             {activeScreen === 0 && (
               <motion.div
                 className="w-full flex flex-col flex-1 justify-center items-center text-black gap-24"
