@@ -14,7 +14,7 @@ const HeaderComponent: React.FC = () => {
     };
 
     return (
-        <header className="flex justify-between items-center py-4 px-52 bg-black">
+        <header className="flex justify-between items-center py-4 px-52 bg-[#111111] border-b border-b-white border-opacity-10">
             <div className="text-green-400 text-2xl font-bold hover:cursor-pointer" onClick={(e)=>redirectToHome(e)}>
                 <img src={Logo} alt="Vance_Logo" className="h-8" />
             </div>

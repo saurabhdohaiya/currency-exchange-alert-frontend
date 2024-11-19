@@ -1,8 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
+import ProtectedRoute from "./components/ProtectedRoute";
+
 import LandingPage from "./pages/LandingPage";
-// import Dashboard from "./pages/Dashboard";
+import DashboardPage from "./pages/DashboardPage";
+import SignInPage from "./pages/SignInPage";
 
 const App: React.FC = () => {
   return (
@@ -10,7 +13,15 @@ const App: React.FC = () => {
       <Layout>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+          <Route path="/signin" element={<SignInPage />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <DashboardPage />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Layout>
     </Router>
