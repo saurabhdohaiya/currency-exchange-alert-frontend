@@ -3,13 +3,13 @@ import {getAuth} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBEFd2Py0it0Q5u6F8voueZCzoStD-Kq8E",
-  authDomain: "currency-exchange-alert.firebaseapp.com",
-  projectId: "currency-exchange-alert",
-  storageBucket: "currency-exchange-alert.firebasestorage.app",
-  messagingSenderId: "254696276606",
-  appId: "1:254696276606:web:ca259fde18d812f3fc0e2f",
-  measurementId: "G-MWL3LB4F6P"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);

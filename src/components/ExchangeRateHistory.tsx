@@ -8,6 +8,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  ChartData,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import axios from "axios";
@@ -41,7 +42,7 @@ interface ExchangeRateData {
 
 const ExchangeRateHistory: React.FC = () => {
   const [selectedCountry, setSelectedCountry] = useState<string>("AED");
-  const [chartData, setChartData] = useState<any>(null);
+  const [chartData, setChartData] = useState<ChartData<"line"> | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false); // State to manage modal visibility
@@ -95,12 +96,47 @@ const ExchangeRateHistory: React.FC = () => {
       {chartData && !loading && !error && (
         <div className="flex w-full p-1 border border-white border-opacity-15 rounded-md">
           <Line
-            data={chartData}
+            data={{
+              ...chartData,
+              datasets: chartData.datasets.map((dataset) => ({
+                ...dataset,
+                borderColor: "#79E7A5",
+                borderWidth: 2,
+                backgroundColor: "rgba(121, 231, 165, 0.55)",
+                fill: "start",
+              })),
+            }}
             options={{
               responsive: true,
               maintainAspectRatio: true,
               plugins: {
                 legend: { display: false, position: "top" },
+              },
+              elements: {
+                line: {
+                  tension: 0.4,
+                },
+                point: {
+                  radius: 0,
+                },
+              },
+              scales: {
+                x: {
+                  grid: {
+                    color: "rgba(255, 255, 255, 0.1)",
+                  },
+                  ticks: {
+                    color: "#FFFFFF",
+                  },
+                },
+                y: {
+                  grid: {
+                    color: "rgba(255, 255, 255, 0.1)",
+                  },
+                  ticks: {
+                    color: "#FFFFFF",
+                  },
+                },
               },
             }}
           />
