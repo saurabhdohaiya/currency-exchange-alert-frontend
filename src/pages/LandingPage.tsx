@@ -163,7 +163,7 @@ const LandingPage: React.FC = () => {
                     />
 
                     {/* Screen1 - Layer 2 */}
-                    <div className="relative h-[520px] w-[844px] z-20 p-4 flex items-start justify-center ml-16 mr-auto transform -translate-y-[160px]">
+                    <div className="relative h-[520px] w-[724px] z-20 p-4 flex items-start justify-center ml-16 mr-auto transform -translate-y-[160px]">
                       <motion.img
                         variants={imageVariants}
                         src={IphoneScreenOne}
@@ -234,7 +234,7 @@ const LandingPage: React.FC = () => {
                     />
 
                     {/* Screen1 - Layer 2 */}
-                    <div className="relative h-[376px] w-[568px] z-20 p-4 flex items-start justify-center ml-16 mr-auto transform -translate-y-[104px]">
+                    <div className="relative h-[376px] w-[468px] z-20 p-4 flex items-start justify-center ml-16 mr-auto transform -translate-y-[104px]">
                       <motion.img
                         variants={imageVariants}
                         src={IphoneScreenTwo}
@@ -330,7 +330,7 @@ const LandingPage: React.FC = () => {
                     />
 
                     {/* Screen1 - Layer 2 */}
-                    <div className="relative h-[376px] w-[568px] z-20 p-4 flex items-start justify-center ml-16 mr-auto transform -translate-y-[104px]">
+                    <div className="relative h-[376px] w-[468px] z-20 p-4 flex items-start justify-center ml-16 mr-auto transform -translate-y-[104px]">
                       <motion.img
                         variants={imageVariants}
                         src={IphoneScreenThree}

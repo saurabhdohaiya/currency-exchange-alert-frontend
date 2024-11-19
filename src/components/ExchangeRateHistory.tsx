@@ -43,6 +43,8 @@ interface ExchangeRateData {
   resDate: string;
 }
 
+const BaseAPIEndpoint = process.env.REACT_APP_BASE_API_ENDPOINT;
+
 const ExchangeRateHistory: React.FC = () => {
   const [selectedCountry, setSelectedCountry] = useState<string>("AED");
   const [chartData, setChartData] = useState<ChartData<"line"> | null>(null);
@@ -56,7 +58,7 @@ const ExchangeRateHistory: React.FC = () => {
       setError(null);
       try {
         const response = await axios.get(
-          `https://web-api.vance.club/public/api/currency-converter/forex?code=${selectedCountry}INR%3DX&timeline=1M`
+          `${BaseAPIEndpoint}forex?code=${selectedCountry}INR%3DX&timeline=1M`
         );
         const data: ExchangeRateData[] = response.data;
 
