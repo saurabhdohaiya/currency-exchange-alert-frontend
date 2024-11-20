@@ -4,16 +4,22 @@
 
 ### **Live Demo**: [View Live](https://currency-exchange-alert-frontend.onrender.com/)
 
-A **responsive and interactive landing page** for a currency exchange service. This project provides a visually appealing user experience with smooth animations, dynamic content, and multiple features, including currency conversion, live rates, and rate alerts.
+A **responsive and interactive landing page** for a currency exchange service. This project provides a visually appealing user experience with smooth animations, dynamic content, and multiple features, including currency conversion, live rates, and rate alerts. The application also includes a Firebase-powered authentication system and a feature-rich dashboard.
 
 ---
 
 ## **Overview**
 
-The landing page is designed to showcase the key functionalities of a currency exchange service, such as:
-1. **Currency Converter**: Provides a simple and effective way to calculate currency conversions.
-2. **Live Rates**: Displays live exchange rates in a user-friendly interface.
-3. **Set Rate Alert**: Allows users to set alerts for desired exchange rates.
+The landing page and dashboard offer a seamless and visually engaging experience for users to explore currency exchange features, such as:
+1. **Currency Converter**: A user-friendly interface for currency conversion.
+2. **Live Rates**: Displays live exchange rates dynamically.
+3. **Set Rate Alert**: Allows users to set alerts for their desired exchange rates.
+4. **Sign-In with Firebase**: Secure authentication using Google Sign-In.
+5. **Currency Alert Dashboard**: A dedicated dashboard for managing and viewing alerts.
+6. **Exchange Rate History Chart**: A detailed line chart to visualize historical exchange rate data.
+7. **Notifications and Feedback**: Integrated with **React Toastify** for instant notifications.
+8. **Shimmer Effect**: A loading animation to enhance user experience during data fetching.
+
 
 The page uses **Framer Motion** for animations and transitions, along with **Tailwind CSS** for styling. The app is built with **React**, ensuring a fast and responsive user experience.
 
@@ -24,53 +30,65 @@ The page uses **Framer Motion** for animations and transitions, along with **Tai
 
 ## **Features**
 
-### **1. Tab-Based Navigation**
-- **Tabs**: Three tabs, each corresponding to a specific feature:
-  - `Currency Converter`
-  - `Live Rates`
-  - `Set Rate Alert`
-- **Functionality**: Users can switch between screens by clicking on the respective tabs.
-- **Animation**: Smooth transitions with active and inactive state indicators.
+### **1. Landing Page**
+- **Tab-Based Navigation**:
+  - Three tabs (`Currency Converter`, `Live Rates`, `Set Rate Alert`), each with specific functionality.
+  - Users can switch between screens by clicking on the tabs or scrolling vertically.
+- **Scroll-Based Navigation**:
+  - Smooth transitions between screens as the user scrolls.
+  - Animated background layers and gradient effects for added depth.
+- **Hero Section**:
+  - Dynamic text and buttons with animations.
+  - Download links for Google Play Store and Apple App Store.
+- **Animations**:
+  - Implemented with **Framer Motion** for smooth entry and exit effects.
+  - Background images, gradients, and hero text are animated for a polished experience.
 
-### **2. Scroll-Based Navigation**
-- **Functionality**: Users can scroll vertically to navigate between screens.
-- **Animation**: 
-  - Screens slide in from the bottom and slide out to the top.
-  - Parallax-like effects on background images.
-
-### **3. Hero Section**
-- **Dynamic Content**: Each screen includes a hero section with specific text and call-to-action buttons.
-- **Animation**:
-  - Text fades in and slides up when entering the view and slides out when exiting.
-  - App store buttons and supporting images animate seamlessly.
-
-### **4. Background Layers**
-- **Layered Background**:
-  - Includes testimonial images, gradient overlays, and device mockups (iPhone).
-- **Animation**:
-  - Gradients and images smoothly transition in and out with the screens.
-  - Each layer has a different animation timeline to create depth.
-
+### **2. Firebase-Powered Authentication**
+- **Google Sign-In**:
+  - Allows users to sign in securely using their Google accounts.
+  - Integrated with Firebase for authentication.
 
 ![image](https://github.com/user-attachments/assets/3dcf8663-c625-4718-a7bd-a226585b09ec)
 
-### **5. Set Rate Alert Interaction**
-- **Card**: A card appears on the `Set Rate Alert` screen, prompting the user to set their first rate alert.
-- **Functionality**:
-  - Buttons for "Accept" (navigates to the sign-in page) and "Cancel."
-- **Animation**: The card appears with scale and fade effects.
+### **3. Currency Alert Dashboard**
+- **Set Alerts**:
+  - A modal interface to set rate alerts with a title and target exchange rate.
+  - Saves alert data to **Firebase Firestore**.
+- **View Alerts**:
+  - Displays all created alerts in a responsive list.
+  - Includes pagination for efficient navigation through large datasets.
+- **Notifications**:
+  - Success and error notifications using **React Toastify**.
+- **Error Handling**:
+  - Validates user input and provides visual feedback for errors.
 
+### **4. Exchange Rate History**
+- **Dynamic Chart**:
+  - A **line chart** (powered by Chart.js) that displays exchange rate history.
+  - Custom styling:
+    - Line color: `#79E7A5`
+    - Background fill: `#79E7A5` with 15% opacity.
+- **Loading and Error States**:
+  - Shimmering effect while fetching data.
+  - User-friendly error messages for failed requests.
 ---
 
 ## **Technologies Used**
-
 1. **React**:
-   - Functional components with hooks (`useState`, `useEffect`) for state management.
+   - Functional components with hooks for state and effect management.
 2. **Framer Motion**:
-   - Implements animations and transitions for a smooth user experience.
+   - Provides animations and transitions for an engaging user experience.
 3. **Tailwind CSS**:
-   - Utility-first CSS framework for styling.
-4. **React Router**:
-   - Handles navigation (e.g., to the sign-in page).
+   - Utility-first CSS framework for responsive and scalable styling.
+4. **Firebase**:
+   - **Authentication**: Secure Google Sign-In.
+   - **Firestore**: For storing and managing rate alerts.
+5. **React Toastify**:
+   - Delivers toast notifications for feedback.
+6. **Chart.js**:
+   - Displays historical exchange rate data in a customizable chart.
+7. **React Router**:
+   - Handles navigation between the landing page, sign-in, and dashboard.
 
 
