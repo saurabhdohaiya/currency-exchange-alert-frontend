@@ -1,46 +1,75 @@
-# Getting Started with Create React App
+# Currency Exchange Rate
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![image](https://github.com/user-attachments/assets/055e4584-10f1-43e7-ab18-527f87dca2f8)
 
-## Available Scripts
 
-In the project directory, you can run:
+A **responsive and interactive landing page** for a currency exchange service. This project provides a visually appealing user experience with smooth animations, dynamic content, and multiple features, including currency conversion, live rates, and rate alerts.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## **Overview**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The landing page is designed to showcase the key functionalities of a currency exchange service, such as:
+1. **Currency Converter**: Provides a simple and effective way to calculate currency conversions.
+2. **Live Rates**: Displays live exchange rates in a user-friendly interface.
+3. **Set Rate Alert**: Allows users to set alerts for desired exchange rates.
 
-### `npm test`
+The page uses **Framer Motion** for animations and transitions, along with **Tailwind CSS** for styling. The app is built with **React**, ensuring a fast and responsive user experience.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+![image](https://github.com/user-attachments/assets/34e89230-e89f-4090-bad9-50272801dfd2)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## **Features**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### **1. Tab-Based Navigation**
+- **Tabs**: Three tabs, each corresponding to a specific feature:
+  - `Currency Converter`
+  - `Live Rates`
+  - `Set Rate Alert`
+- **Functionality**: Users can switch between screens by clicking on the respective tabs.
+- **Animation**: Smooth transitions with active and inactive state indicators.
 
-### `npm run eject`
+### **2. Scroll-Based Navigation**
+- **Functionality**: Users can scroll vertically to navigate between screens.
+- **Animation**: 
+  - Screens slide in from the bottom and slide out to the top.
+  - Parallax-like effects on background images.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### **3. Hero Section**
+- **Dynamic Content**: Each screen includes a hero section with specific text and call-to-action buttons.
+- **Animation**:
+  - Text fades in and slides up when entering the view and slides out when exiting.
+  - App store buttons and supporting images animate seamlessly.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### **4. Background Layers**
+- **Layered Background**:
+  - Includes testimonial images, gradient overlays, and device mockups (iPhone).
+- **Animation**:
+  - Gradients and images smoothly transition in and out with the screens.
+  - Each layer has a different animation timeline to create depth.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![image](https://github.com/user-attachments/assets/3dcf8663-c625-4718-a7bd-a226585b09ec)
 
-## Learn More
+### **5. Set Rate Alert Interaction**
+- **Card**: A card appears on the `Set Rate Alert` screen, prompting the user to set their first rate alert.
+- **Functionality**:
+  - Buttons for "Accept" (navigates to the sign-in page) and "Cancel."
+- **Animation**: The card appears with scale and fade effects.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## **Technologies Used**
+
+1. **React**:
+   - Functional components with hooks (`useState`, `useEffect`) for state management.
+2. **Framer Motion**:
+   - Implements animations and transitions for a smooth user experience.
+3. **Tailwind CSS**:
+   - Utility-first CSS framework for styling.
+4. **React Router**:
+   - Handles navigation (e.g., to the sign-in page).
+
+
