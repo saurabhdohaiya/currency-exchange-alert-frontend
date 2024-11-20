@@ -11,14 +11,13 @@ A **responsive and interactive landing page** for a currency exchange service. T
 ## **Overview**
 
 The landing page and dashboard offer a seamless and visually engaging experience for users to explore currency exchange features, such as:
-1. **Currency Converter**: A user-friendly interface for currency conversion.
-2. **Live Rates**: Displays live exchange rates dynamically.
-3. **Set Rate Alert**: Allows users to set alerts for their desired exchange rates.
-4. **Sign-In with Firebase**: Secure authentication using Google Sign-In.
-5. **Currency Alert Dashboard**: A dedicated dashboard for managing and viewing alerts.
-6. **Exchange Rate History Chart**: A detailed line chart to visualize historical exchange rate data.
-7. **Notifications and Feedback**: Integrated with **React Toastify** for instant notifications.
-8. **Shimmer Effect**: A loading animation to enhance user experience during data fetching.
+1. **Live Rates**: Displays live exchange rates dynamically.
+2. **Set Rate Alert**: Allows users to set alerts for their desired exchange rates.
+3. **Sign-In with Firebase**: Secure authentication using Google Sign-In.
+4. **Currency Alert Dashboard**: A dedicated dashboard for managing and viewing alerts.
+5. **Exchange Rate History Chart**: A detailed line chart to visualize historical exchange rate data.
+6. **Notifications and Feedback**: Integrated with **React Toastify** for instant notifications.
+7. **Shimmer Effect**: A loading animation to enhance user experience during data fetching.
 
 
 The page uses **Framer Motion** for animations and transitions, along with **Tailwind CSS** for styling. The app is built with **React**, ensuring a fast and responsive user experience.
