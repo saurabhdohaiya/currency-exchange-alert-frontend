@@ -2,6 +2,7 @@
 
 ![image](https://github.com/user-attachments/assets/055e4584-10f1-43e7-ab18-527f87dca2f8)
 
+### **Live Demo**: [View Live](https://currency-exchange-alert-frontend.onrender.com/)
 
 A **responsive and interactive landing page** for a currency exchange service. This project provides a visually appealing user experience with smooth animations, dynamic content, and multiple features, including currency conversion, live rates, and rate alerts.
 
@@ -20,7 +21,6 @@ The page uses **Framer Motion** for animations and transitions, along with **Tai
 
 ![image](https://github.com/user-attachments/assets/34e89230-e89f-4090-bad9-50272801dfd2)
 
-###Live Demo: [View Live](https://currency-exchange-alert-frontend.onrender.com/)
 
 ## **Features**
 
