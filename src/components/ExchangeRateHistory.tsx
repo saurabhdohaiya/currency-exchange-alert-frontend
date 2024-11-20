@@ -43,9 +43,14 @@ interface ExchangeRateData {
   resDate: string;
 }
 
+interface Props {
+  alerts: any[];
+  setAlerts: React.Dispatch<React.SetStateAction<any[]>>;
+}
+
 const BaseAPIEndpoint = process.env.REACT_APP_BASE_API_ENDPOINT;
 
-const ExchangeRateHistory: React.FC = () => {
+const ExchangeRateHistory: React.FC<Props> = ({ alerts, setAlerts }) => {
   const [selectedCountry, setSelectedCountry] = useState<string>("AED");
   const [chartData, setChartData] = useState<ChartData<"line"> | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -186,6 +191,7 @@ const ExchangeRateHistory: React.FC = () => {
         <CreateRateAlertModal
           closeModal={() => setIsModalOpen(false)}
           selectedCountry={selectedCountry}
+          setAlerts={setAlerts}
         />
       )}
     </div>

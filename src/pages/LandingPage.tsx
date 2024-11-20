@@ -10,20 +10,18 @@ import IphoneScreenThree from "../assets/IphoneScreenThree.svg";
 import { FaIndianRupeeSign } from "react-icons/fa6";
 import { FaLink } from "react-icons/fa";
 import { MdAddBox } from "react-icons/md";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 
 import { TbAlertTriangleFilled } from "react-icons/tb";
 
 const LandingPage: React.FC = () => {
   const [activeScreen, setActiveScreen] = useState(0);
-  const navigate = useNavigate(); // Initialize navigate function
+  const navigate = useNavigate();
 
-  // Function to handle Accept button click
   const handleAccept = () => {
-    navigate("/signin"); // Redirect to the dashboard
+    navigate("/signin"); // Redirect to the signin page
   };
 
-  // Tab Labels
   const tabs = [
     {
       label: "Currency Converter",

@@ -1,50 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { fetchCurrencyAlerts } from "../services/fireStoreService";
+import React, { useState } from "react";
 import AlertListItem from "./AlertListItem";
 import Shimmer from "./Shimmer";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
-import { toast } from "react-toastify";
 
 const ITEMS_PER_PAGE = 10;
 
-const RateAlertHistory: React.FC = () => {
-  const [alerts, setAlerts] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+interface RateAlertHistoryProps {
+  alerts: any[]; // Alerts passed as a prop
+  loading: boolean; // Loading state passed as a prop
+  error: string | null; // Error state passed as a prop
+}
+
+const RateAlertHistory: React.FC<RateAlertHistoryProps> = ({
+  alerts,
+  loading,
+  error,
+}) => {
   const [currentPage, setCurrentPage] = useState(1);
-
-  useEffect(() => {
-    const fetchAlerts = async () => {
-      try {
-        const fetchedAlerts = await fetchCurrencyAlerts();
-        setAlerts(fetchedAlerts);
-        setError(null);
-        toast.success("Alerts fetched successfully!", {
-          autoClose: 2000,
-          style: {
-            color: "#79E7A5",
-            backgroundColor: "#222222",
-            borderRadius: "8px",
-          },
-        });
-      } catch (error) {
-        console.error("Error fetching alerts:", error);
-        setError("Failed to fetch alerts. Please try again.");
-        toast.error("Failed to fetch alerts. Please try again.", {
-          autoClose: 3000,
-          style: {
-            color: "#EF4444",
-            backgroundColor: "#222222",
-            borderRadius: "8px",
-          },
-        });
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchAlerts();
-  }, []);
 
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;

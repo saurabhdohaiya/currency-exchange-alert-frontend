@@ -8,15 +8,26 @@ interface AlertListItemProps {
     currencyPair: string;
     targetRate: number;
     triggered: boolean;
-    createdAt: { seconds: number; nanoseconds: number };
+    createdAt?: { seconds: number; nanoseconds: number }; // made optional
   };
 }
 
 const AlertListItem: React.FC<AlertListItemProps> = ({ alert }) => {
-  const date = new Date(alert.createdAt.seconds * 1000);
-  const day = String(date.getDate()).padStart(2, "0");
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const year = date.getFullYear();
+  // Default date = todays date
+  let date = new Date();
+  if (alert.createdAt && alert.createdAt.seconds) {
+    date = new Date(alert.createdAt.seconds * 1000); // Convert seconds to milliseconds
+  } else {
+    console.warn("Invalid or missing createdAt field in alert:", alert);
+  }
+
+  const day = !isNaN(date.getDate())
+    ? String(date.getDate()).padStart(2, "0")
+    : "01";
+  const month = !isNaN(date.getMonth())
+    ? String(date.getMonth() + 1).padStart(2, "0")
+    : "01";
+  const year = !isNaN(date.getFullYear()) ? date.getFullYear() : 1970;
 
   const selectedCountryData = availableCountries.find(
     (country) => country.value === alert.currencyPair
@@ -25,8 +36,12 @@ const AlertListItem: React.FC<AlertListItemProps> = ({ alert }) => {
   return (
     <div className="w-full h-full flex flex-row items-start justify-between bg-[#222222] p-4 rounded-lg shadow-md text-white mb-2">
       <div className="flex flex-col items-start">
-        <p className="font-semibold text-sm opacity-75 mb-1">{alert.title}</p>
-        <p className="font-bold text-3xl mb-6">₹{alert.targetRate}</p>
+        <p className="font-semibold text-sm opacity-75 mb-1">
+          {alert.title || "No title provided"}
+        </p>
+        <p className="font-bold text-3xl mb-6">
+          ₹{alert.targetRate.toFixed(1)}
+        </p>
         {selectedCountryData ? (
           <div className="flex flex-row gap-3 justify-center items-center">
             <img
@@ -42,8 +57,8 @@ const AlertListItem: React.FC<AlertListItemProps> = ({ alert }) => {
             </div>
           </div>
         ) : (
-          <p>Select Country</p>
-        )}{" "}
+          <p className="text-red-500">Country data not available</p>
+        )}
       </div>
       <div className="flex flex-col justify-between items-end h-full">
         <div className="flex flex-row gap-1 items-center mb-12">

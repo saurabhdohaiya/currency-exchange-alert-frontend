@@ -4,14 +4,16 @@ import { saveRateAlert } from "../services/fireStoreService";
 import { MdAddBox } from "react-icons/md";
 import { toast } from "react-toastify";
 
-interface CreateRateAlertModalProps {
+interface Props {
   closeModal: () => void;
-  selectedCountry: string; // New prop for the selected country
+  selectedCountry: string;
+  setAlerts: React.Dispatch<React.SetStateAction<any[]>>;
 }
 
-const CreateRateAlertModal: React.FC<CreateRateAlertModalProps> = ({
+const CreateRateAlertModal: React.FC<Props> = ({
   closeModal,
   selectedCountry,
+  setAlerts,
 }) => {
   const [title, setTitle] = useState("Send money home");
   const [targetRate, setTargetRate] = useState("1000");
@@ -20,13 +22,13 @@ const CreateRateAlertModal: React.FC<CreateRateAlertModalProps> = ({
   );
 
   const createAlert = async () => {
-    console.log(
-      "Create alert called for: " + selectedCountry,
-      title,
-      targetRate
-    );
     try {
-      await saveRateAlert(title, selectedCountry, parseFloat(targetRate));
+      const newAlert = await saveRateAlert(
+        title,
+        selectedCountry,
+        parseFloat(targetRate)
+      );
+      setAlerts((prevAlerts) => [newAlert, ...prevAlerts]);
       toast.success("Rate alert created successfully!", {
         autoClose: 2000,
         style: {
